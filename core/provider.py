@@ -1,4 +1,4 @@
-from validators import Validators
+from core.validators import Validators
 
 class Provider(object):
     
