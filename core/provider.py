@@ -2,8 +2,7 @@ from validators import Validators
 
 class Provider(object):
     
-    def __init__(self, file_path):
-        self.file_path = file_path
+    def __init__(self):
         self.validators = Validators()
     
     
@@ -67,12 +66,6 @@ class Provider(object):
         return day_list
                 
 
-    def get_schedule(self):
+    def get_schedule(self, file_path):
+        self.file_path = file_path
         return  self.constructor_json()
-        
-if __name__ == "__main__":
-    print("ingresa la ruta")
-    ruta = input()
-    provider = Provider(ruta)   
-    print(provider.get_schedule())
-    
