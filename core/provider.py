@@ -7,19 +7,72 @@ class Provider(object):
         self.validators = Validators()
     
     
-    def open_dataset(self):
-        if(self.validators.validate_file(self.file_path)):
+    def open_data_set(self):
+        if( self.validators.validate_file(self.file_path) and self.validators.validate_type_file(self.file_path, 'txt')):
             self.data_set = open(self.file_path, "r")
-            print(self.data_set.read())
-         
+            return True
+        else:
+            return False
+    
+    
+    def read_data_set(self):
+        if self.open_data_set():
+            try:
+                self.data = self.data_set.readlines()
+            except Exception as e:
+                return False
+            return True
+        else: 
+            return False
 
          
+    def constructor_json(self):
+        if self.read_data_set():
+            return self.constructor_schedule()
+        else:
+            return {}
+        
+                    
+    def constructor_week(self):
+        data_json = dict()
+        for week in self.data:
+            key, value = week.split('=')
+            if key in data_json:
+                data_json[key].append(value)
+            else:
+                data_json[key] = [value]
+        return data_json  
+      
+        
+    def constructor_schedule(self):
+        data_json = self.constructor_week()
+        schedule = []
+        for people in data_json:
+            for week in data_json[people]:
+                schedule.append(self.constructor_day(week.split(',')))
+            data_json[people] = schedule.copy()
+            schedule.clear()
+        return data_json      
     
+    
+    def constructor_day(self, schedule):
+        day_list = dict()
+        for day in schedule:
+            day_name = day[0:2]
+            hours = day[3:].split('-')
+            if day_name in day_list:
+                day_list[day_name].append([hours])
+            else:
+                day_list[day_name] = [hours]
+        return day_list
+                
 
-    
+    def get_schedule(self):
+        return  self.constructor_json()
+        
 if __name__ == "__main__":
     print("ingresa la ruta")
     ruta = input()
     provider = Provider(ruta)   
-    provider.open_dataset()
+    print(provider.get_schedule())
     
