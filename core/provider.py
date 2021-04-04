@@ -27,7 +27,6 @@ class Provider(object):
             return False
         return True
 
-
          
     def constructor_json(self):
         if self.read_data_set():
@@ -64,7 +63,7 @@ class Provider(object):
             day_name = day[0:2]
             hours = day[3:].split('-')
             if day_name in day_list:
-                day_list[day_name].append([hours])
+                day_list[day_name].append(hours)
             else:
                 day_list[day_name] = [hours]
         return day_list
