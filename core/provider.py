@@ -1,28 +1,32 @@
 from core.validators import Validators
+from core.exception import NotFileException, TypeFileException
 
 class Provider(object):
+    
+    type_file = 'txt'
     
     def __init__(self):
         self.validators = Validators()
     
     
     def open_data_set(self):
-        if( self.validators.validate_file(self.file_path) and self.validators.validate_type_file(self.file_path, 'txt')):
-            self.data_set = open(self.file_path, "r")
-            return True
+        if self.validators.validate_file(self.file_path):
+            if self.validators.validate_type_file(self.file_path, self.type_file):
+                self.data_set = open(self.file_path, "r")
+            else:
+                raise TypeFileException(self.type_file)
         else:
-            return False
+            raise NotFileException(self.file_path)
     
     
     def read_data_set(self):
-        if self.open_data_set():
-            try:
-                self.data = self.data_set.readlines()
-            except Exception as e:
-                return False
-            return True
-        else: 
+        self.open_data_set()
+        try:
+            self.data = self.data_set.readlines()
+        except Exception as e:
             return False
+        return True
+
 
          
     def constructor_json(self):
