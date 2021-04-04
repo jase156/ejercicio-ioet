@@ -1,3 +1,3 @@
-from modules.pay.controller import Controller
-from modules.pay.model import ModelPay
-from modules.pay.view import ViewPay
+from modules.pay import ControllerPay
+from modules.pay import ModelPay
+from modules.pay import ViewPay
