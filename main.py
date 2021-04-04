@@ -1,6 +1,8 @@
-from modules import ModelPay
+from modules.pay import ModelPay
+from modules.pay import ViewPay
+from modules.pay import ControllerPay
+
 if __name__ == "__main__":
-    print("ingresa la ruta")
-    ruta = input()
-    pay = ModelPay()
-    pay.read_schedule(ruta)
+    run = ControllerPay(ModelPay(),ViewPay())
+    run.admin_main_menu()
+    
