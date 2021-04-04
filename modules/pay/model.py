@@ -5,6 +5,6 @@ class ModelPay(object):
         self.provider = Provider()
     
     def read_schedule(self, ruta):
-        print(self.provider.get_schedule(ruta))
+        return self.provider.get_schedule(ruta)
 
     
