@@ -2,7 +2,7 @@ from core.exception import FormatTimeException
 
 class Time(object):
     #def convert_to_time(self,str_time):
-    def get_hours(self, start, end):
+    def get_hours(self, start:str, end:str)->tuple:
         try:
             h_start, m_start = start.split(':')
             h_end, m_end = end.split(':')
@@ -11,12 +11,12 @@ class Time(object):
         except Exception as e:
             raise FormatTimeException()
     
-    def convert_to_time(self, minute):
+    def convert_to_time(self, minute:int)->tuple:
         h = minute // 60
         m = minute % 60
         return h, m
     
-    def greater_than(self, time1, time2):
+    def greater_than(self, time1:str, time2:str)->bool:
         h_time1, m_time1 = time1.split(':')
         h_time2, m_time2 = time2.split(':')
         time1_m = (int(h_time1)*60)+int(m_time1)
@@ -26,7 +26,7 @@ class Time(object):
         else:
             return False
         
-    def greater_or_equal_than(self, time1, time2):
+    def greater_or_equal_than(self, time1:str, time2:str)->bool:
         h_time1, m_time1 = time1.split(':')
         h_time2, m_time2 = time2.split(':')
         time1_m = (int(h_time1)*60)+int(m_time1)
@@ -36,7 +36,7 @@ class Time(object):
         else:
             return False
     
-    def smaller_or_equal_than(self, time1, time2):
+    def smaller_or_equal_than(self, time1:str, time2:str)->bool:
         h_time1, m_time1 = time1.split(':')
         h_time2, m_time2 = time2.split(':')
         time1_m = (int(h_time1)*60)+int(m_time1)
@@ -46,7 +46,7 @@ class Time(object):
         else:
             return False
     
-    def smaller_than(self, time1, time2):
+    def smaller_than(self, time1:str, time2:str)->bool:
         h_time1, m_time1 = time1.split(':')
         h_time2, m_time2 = time2.split(':')
         time1_m = (int(h_time1)*60)+int(m_time1)
@@ -56,7 +56,7 @@ class Time(object):
         else:
             return False
     
-    def equals(self, time1, time2):
+    def equals(self, time1:str, time2:str)->bool:
         h_time1, m_time1 = time1.split(':')
         h_time2, m_time2 = time2.split(':')
         time1_m = (int(h_time1)*60)+int(m_time1)
@@ -66,7 +66,7 @@ class Time(object):
         else:
             return False
 
-    def subtraction(self, time1, time2):
+    def subtraction(self, time1:str, time2:str)->int:
         h_time1, m_time1 = time1.split(':')
         h_time2, m_time2 = time2.split(':')
         time1_m = (int(h_time1)*60)+int(m_time1)

@@ -1,9 +1,9 @@
 class NotFileException(Exception):
-    def __init__(self, file):
+    def __init__(self, file:str):
         super().__init__("El archivo {} no existe".format(file))
 
 class TypeFileException(Exception):
-    def __init__(self, file):
+    def __init__(self, file:str):
         super().__init__("El tipo de archivo {} es el incorrecto".format(file))
         
 class FormatTimeException(Exception):
