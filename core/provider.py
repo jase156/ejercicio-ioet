@@ -22,7 +22,7 @@ class Provider(object):
     def read_data_set(self):
         self.open_data_set()
         try:
-            self.data = self.data_set.readlines()
+            self.data = [line.rstrip() for line in self.data_set]
         except Exception as e:
             return False
         return True
@@ -61,7 +61,7 @@ class Provider(object):
         day_list = dict()
         for day in schedule:
             day_name = day[0:2]
-            hours = day[3:].split('-')
+            hours = day[2:].split('-')
             if day_name in day_list:
                 day_list[day_name].append(hours)
             else:
