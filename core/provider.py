@@ -77,3 +77,9 @@ class Provider(object):
     def get_schedule(self, file_path:str)->dict:
         self.file_path = file_path
         return  self.constructor_json()
+    
+    def get_table(self)->dict:
+        table = open("./resources/table.json", "r")
+        table = "".join(table.read().split("\n"))
+        table = eval(table)
+        return table
