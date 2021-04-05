@@ -1,8 +1,11 @@
 from core import Time
+from core import FormatTimeException
+
 class Business(object):
     
     def __init__(self):
         self.time = Time()
+    
     
     dataset = {
         'MO':[
@@ -50,9 +53,12 @@ class Business(object):
             
     def week_work(self,weeks):
         payment = 0
-        for week in weeks:
-            payment = payment + self.day_work(week)
-        return payment
+        try:
+            for week in weeks:
+                payment = payment + self.day_work(week)
+            return round(payment,2)
+        except FormatTimeException as e:
+            return e
             
             
     def day_work(self,days):
@@ -68,7 +74,6 @@ class Business(object):
             for schedule in self.dataset[day]:
                 pay_hour = pay_hour + self.calculate_payment(day,schedule,hour,h,m)
         return pay_hour
-                    
         
     def calculate_payment(self,day, schedule, hour, h, m):
         pay = 0
@@ -86,4 +91,4 @@ class Business(object):
             h_minus, m_minus = self.time.convert_to_time(self.time.subtraction(hour_end,schedule_start))
             pay = (h_minus*schedule[2]) + ((schedule[2]*m_minus)/60)
             
-        return pay
+        return round(pay,2)

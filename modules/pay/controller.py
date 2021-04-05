@@ -1,5 +1,4 @@
-from core import TypeFileException, NotFileException
-
+from core import TypeFileException, NotFileException, FormatFileException
 class ControllerPay(object):
     
     def __init__(self, model, view, business):
@@ -44,6 +43,8 @@ class ControllerPay(object):
                 self.view.show_message_error(e)
             except TypeFileException as e:
                 self.view.show_message_error(e)
+            except FormatFileException as e:
+                self.view.show_message_error(e)
     
     def select_calculate(self, file):
         while True:
@@ -70,7 +71,7 @@ class ControllerPay(object):
         
     def calculate_pay_people(self):
         while True:
-            name = self.view.input_name()
+            name = self.view.input_name().upper()
             if name in self.data_set:
                 switch = {'1':self.breaks}
                 payments = self.business.payments({name:self.data_set[name]})

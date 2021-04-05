@@ -1,10 +1,15 @@
+from core.exception import FormatTimeException
+
 class Time(object):
     #def convert_to_time(self,str_time):
     def get_hours(self, start, end):
-        h_start, m_start = start.split(':')
-        h_end, m_end = end.split(':')
-        total_min = ((int(h_end)*60)+int(m_end)) - ((int(h_start)*60)+int(m_start))
-        return self.convert_to_time(total_min)
+        try:
+            h_start, m_start = start.split(':')
+            h_end, m_end = end.split(':')
+            total_min = ((int(h_end)*60)+int(m_end)) - ((int(h_start)*60)+int(m_start))
+            return self.convert_to_time(total_min)
+        except Exception as e:
+            raise FormatTimeException()
     
     def convert_to_time(self, minute):
         h = minute // 60
