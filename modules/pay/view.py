@@ -58,7 +58,7 @@ class ViewPay(object):
         print("//         Gestor de pago        //")
         print("//              ACME             //")
         print("//                               //")
-        print("//  Opción 1 : {}  //".format(file))
+        print("//  Ruta : {}  //".format(file))
         print("//                               //")
         print("//                               //")
         print("//  1.-Calculo total de          //")
