@@ -6,7 +6,7 @@ Ejercicio práctico elaborado en Python para el cálculo de valores a pagar seg�
 Para el cálculo de las horas trabajadas se basa en la tabla  
  
  
-... 
+```
 Monday - Friday  
 00:01 - 09:00 25 USD  
 09:01 - 18:00 15 USD  
@@ -15,16 +15,15 @@ Saturday and Sunday
 00:01 - 09:00 30 USD  
 09:01 - 18:00 20 USD  
 18:01 - 00:00 25 USD  
-... 
+```
   
 El input será un archivo de texto “.txt” que tendrá líneas con el formato   
  
- 
-... 
+```
 ASTRID=MO10:00-12:00,TH12:00-14:00,SU20:00-21:00  
-... 
+```
   
-Lo cual representa el horario de trabajo por cada día de la semana   
+Lo cual representa el horario de trabajo por cada día de la semana.
  
  
 ### Acerca del ejercicio 🔩 
@@ -43,18 +42,19 @@ Tener instalado Python 3
 En la carpeta raíz ejecutar  
  
  
-... 
+```
 python main.py 
-... 
- 
+```
+
+Ingresar la ruta del archivo dataset.txt que se encuentra dentro de resources
+
  
 ## Ejecutando las pruebas ⚙️ 
 En la carpeta raiz ejecutar  
  
- 
-... 
+```
 python test.py 
-... 
+```
  
  
 ## Autores ✒️ 
