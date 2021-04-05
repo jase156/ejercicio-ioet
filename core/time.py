@@ -20,6 +20,36 @@ class Time(object):
             return True
         else:
             return False
+        
+    def greater_or_equal_than(self, time1, time2):
+        h_time1, m_time1 = time1.split(':')
+        h_time2, m_time2 = time2.split(':')
+        time1_m = (int(h_time1)*60)+int(m_time1)
+        time2_m = (int(h_time2)*60)+int(m_time2)
+        if time1_m >= time2_m:
+            return True
+        else:
+            return False
+    
+    def smaller_or_equal_than(self, time1, time2):
+        h_time1, m_time1 = time1.split(':')
+        h_time2, m_time2 = time2.split(':')
+        time1_m = (int(h_time1)*60)+int(m_time1)
+        time2_m = (int(h_time2)*60)+int(m_time2)
+        if time1_m <= time2_m:
+            return True
+        else:
+            return False
+    
+    def smaller_than(self, time1, time2):
+        h_time1, m_time1 = time1.split(':')
+        h_time2, m_time2 = time2.split(':')
+        time1_m = (int(h_time1)*60)+int(m_time1)
+        time2_m = (int(h_time2)*60)+int(m_time2)
+        if time1_m < time2_m:
+            return True
+        else:
+            return False
     
     def equals(self, time1, time2):
         h_time1, m_time1 = time1.split(':')
